@@ -14,11 +14,21 @@ class Home extends React.Component {
     things: [],
   }
 
-  componentDidMount() {
+  getThings = () => {
     const { uid } = firebase.auth().currentUser;
-    myStuffData.getMyStuff(uid)
+    myStuffData.getMyThings(uid)
       .then(things => this.setState({ things }))
       .catch(err => console.error('could not get things', err));
+  }
+
+  componentDidMount() {
+    this.getThings();
+  }
+
+  deleteThing = (thingId) => {
+    myStuffData.deleteThing(thingId)
+      .then(() => this.getThings())
+      .catch(err => console.error('unable to delete', err));
   }
 
   render() {
@@ -26,6 +36,7 @@ class Home extends React.Component {
       <MyStuffCard
       key = {thing.id}
       thing = {thing}
+      deleteThing = {this.deleteThing}
       />
     ));
 
