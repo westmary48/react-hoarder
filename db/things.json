@@ -2,35 +2,40 @@
   "things": {
     "thing1": {
       "uid": "eOdRlXWjc0dhyLeORz7K63y0ksS2",
-      "type" : "clock",
+      "name" : "clock",
+      "type" : "decor",
       "weight": "50lbs",
       "color": "yellow",
       "age": "4"
     },
     "thing2": {
       "uid": "eOdRlXWjc0dhyLeORz7K63y0ksS2",
-      "type" : "boat",
+      "name" : "boat",
+      "type" : "toy",
       "weight": "10000lbs",
       "color": "blue",
       "age": "4"
     },
     "thing3": {
       "uid": "eOdRlXWjc0dhyLeORz7K63y0ksS2",
-      "type" : "hammock",
+      "name" : "hammock",
+      "type" : "outdoor",
       "weight": "12g",
       "color": "white",
       "age": "4"
     },
     "thing4": {
       "uid": "eOdRlXWjc0dhyLeORz7K63y0ksS2",
-      "type" : "unicycle",
+      "name" : "unicycle",
+      "type" : "exercise equipment",
       "weight": "25lbs",
       "color": "red",
       "age": "4"
     },
     "thing5": {
       "uid": "",
-      "type" : "sweater",
+      "name" : "sweater",
+      "type" : "clothes",
       "weight": "1lbs",
       "color": "pink",
       "age": "4"

@@ -19,4 +19,13 @@ const getMyThings = uid => new Promise((resolve, reject) => {
 
 const deleteThing = thingId => axios.delete(`${baseUrl}/things/${thingId}.json`);
 
-export default { getMyThings, deleteThing };
+const getSingleThing = thingId => axios.get(`${baseUrl}/things/${thingId}.json`);
+
+const postThing = newThing => axios.post(`${baseUrl}/thing.json`, newThing);
+
+export default {
+  getMyThings,
+  deleteThing,
+  getSingleThing,
+  postThing,
+};
