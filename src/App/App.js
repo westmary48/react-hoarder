@@ -13,12 +13,13 @@ import Auth from '../components/Auth/Auth';
 import Home from '../components/Home/Home';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import NewStuff from '../components/NewStuff/NewStuff';
+
+import SingleStuff from '../components/SingleStuff/SingleStuff';
 import EditStuff from '../components/EditStuff/EditStuff';
 
 import './App.scss';
 
 import fbConnection from '../helpers/data/connection';
-import MyStuff from '../components/MyStuff/MyStuff';
 
 fbConnection();
 
@@ -73,7 +74,7 @@ class App extends React.Component {
 
                 <PrivateRoute path= '/new' component = {NewStuff} authed = {authed} />
                 <PrivateRoute path= '/edit/:id' component = {EditStuff} authed = {authed} />
-                <PrivateRoute path= '/stuff/:id' component = {MyStuff} authed = {authed} />
+                <PrivateRoute path= '/thing/:id' component = {SingleStuff} authed = {authed} />
                 <Redirect from = "*" to= "/auth" />
               </Switch>
             </div>
