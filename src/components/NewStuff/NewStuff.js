@@ -1,8 +1,14 @@
 import React from 'react';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+import myStuffData from '../../helpers/data/myStuffData';
+
 import './NewStuff.scss';
 
 const defaultThing = {
+  name: '',
   weight: '',
   color: '',
   type: '',
@@ -20,6 +26,8 @@ class NewStuff extends React.Component {
     this.setState({ newThing: tempThing });
   }
 
+  nameChange = e => this.formFieldStringState('name', e);
+
   typeChange = e => this.formFieldStringState('type', e);
 
   colorChange = e => this.formFieldStringState('color', e);
@@ -28,12 +36,32 @@ class NewStuff extends React.Component {
 
   ageChange = e => this.formFieldStringState('age', e);
 
+  formSubmit = (e) => {
+    e.preventDefault();
+    const saveMe = { ...this.state.newThing };
+    saveMe.uid = firebase.auth().currentUser.uid;
+    myStuffData.postThing(saveMe)
+      .then(() => this.props.history.push('/home'))
+      .catch(err => console.error('unable to save', err));
+  }
+
   render() {
     const { newThing } = this.state;
     return (
       <div className="NewStuff">
         <h1>New Stuff</h1>
-        <form>
+        <form onSubmit={this.formSubmit}>
+        <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              placeholder="clock"
+              value={newThing.name}
+              onChange={this.nameChange}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="sampleName">Type</label>
             <input
@@ -78,11 +106,10 @@ class NewStuff extends React.Component {
               onChange={this.ageChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+          <button type="submit" className="btn btn-primary">Save</button>
+          </form>
       </div>
     );
   }
 }
-
 export default NewStuff;

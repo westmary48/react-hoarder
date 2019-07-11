@@ -21,4 +21,11 @@ const deleteThing = thingId => axios.delete(`${baseUrl}/things/${thingId}.json`)
 
 const getSingleThing = thingId => axios.get(`${baseUrl}/things/${thingId}.json`);
 
-export default { getMyThings, deleteThing, getSingleThing };
+const postThing = newThing => axios.post(`${baseUrl}/thing.json`, newThing);
+
+export default {
+  getMyThings,
+  deleteThing,
+  getSingleThing,
+  postThing,
+};
