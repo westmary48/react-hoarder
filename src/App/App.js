@@ -74,7 +74,7 @@ class App extends React.Component {
 
                 <PrivateRoute path= '/new' component = {NewStuff} authed = {authed} />
                 <PrivateRoute path= '/edit/:id' component = {EditStuff} authed = {authed} />
-                <PrivateRoute path= '/things/:id' component = {SingleStuff} authed = {authed} />
+                <PrivateRoute path= '/thing/:id' component = {SingleStuff} authed = {authed} />
                 <Redirect from = "*" to= "/auth" />
               </Switch>
             </div>
